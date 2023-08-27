@@ -16,7 +16,7 @@ import { Helper, Model, FilteredAdapter } from 'casbin';
 import { CasbinRule } from './casbinRule';
 import {
   DataSource,
-  DataSourceOptions,
+  DataSourceOptions as TypeORMDataSourceOptions,
   FindOptionsWhere,
   Repository,
 } from 'typeorm';
