@@ -34,18 +34,22 @@ class CustomCasbinRule extends CasbinRule {
 test(
   'TestAdapter',
   async () => {
+    expect.assertions(1);
+    
+    const option: TypeORMAdapterOptions = {
+      connection: datasource,
+      tableName: "my_casbin_rule"
+    }
+    
     const datasource = new DataSource({
       ...connectionConfig,
       entities: [CustomCasbinRule],
       synchronize: true,
     });
 
-    const a = await TypeORMAdapter.newAdapter(
-      { connection: datasource },
-      {
+    const a = await TypeORMAdapter.newAdapter(option, {
         customCasbinRuleEntity: CustomCasbinRule,
-      },
-    );
+      });
     try {
       // Because the DB is empty at first,
       // so we need to load the policy from the file adapter (.CSV) first.
