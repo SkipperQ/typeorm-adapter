@@ -32,7 +32,7 @@ interface ExistentConnection {
 export type TypeORMAdapterOptions = ExistentConnection | DataSourceOptions;
 
 export interface DataSourceOptions {
-  tableName?: string; 
+  tableName?: string;
 }
 
 export interface TypeORMAdapterConfig {
