@@ -73,19 +73,14 @@ export default class TypeORMAdapter implements FilteredAdapter {
   ) {
     let a: TypeORMAdapter;
 
-    const options: TypeORMAdapterOptions = {
-      tableName: 'my_casbin_rule',
-    };
-    const adapter = await TypeORMAdapter.newAdapter(options);
-
     const defaults = {
       synchronize: true,
       name: 'node-casbin-official',
     };
-    if ((optionLocal as ExistentConnection).connection) {
-      a = new TypeORMAdapter(optionLocal, adapterConfig);
+    if ((option as ExistentConnection).connection) {
+      a = new TypeORMAdapter(option, adapterConfig);
     } else {
-      const options = optionLocal as DataSourceOptions;
+      const options = option as DataSourceOptions;
       const entities = {
         entities: [
           TypeORMAdapter.getCasbinRuleType(options.type, adapterConfig),
