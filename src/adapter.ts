@@ -82,10 +82,10 @@ export default class TypeORMAdapter implements FilteredAdapter {
       synchronize: true,
       name: 'node-casbin-official',
     };
-    if ((option as ExistentConnection).connection) {
-      a = new TypeORMAdapter(option, adapterConfig);
+    if ((optionLocal as ExistentConnection).connection) {
+      a = new TypeORMAdapter(optionLocal, adapterConfig);
     } else {
-      const options = option as DataSourceOptions;
+      const options = optionLocal as DataSourceOptions;
       const entities = {
         entities: [
           TypeORMAdapter.getCasbinRuleType(options.type, adapterConfig),
