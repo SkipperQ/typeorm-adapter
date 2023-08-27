@@ -74,7 +74,7 @@ export default class TypeORMAdapter implements FilteredAdapter {
     let a: TypeORMAdapter;
 
     const options: TypeORMAdapterOptions = {
-      tableName: "my_casbin_rule",
+      tableName: 'my_casbin_rule',
     };
     const adapter = await TypeORMAdapter.newAdapter(options);
 
