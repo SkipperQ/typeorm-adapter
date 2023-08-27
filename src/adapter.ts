@@ -31,6 +31,10 @@ interface ExistentConnection {
 }
 export type TypeORMAdapterOptions = ExistentConnection | DataSourceOptions;
 
+export interface DataSourceOptions {
+  tableName?: string; 
+}
+
 export interface TypeORMAdapterConfig {
   customCasbinRuleEntity?: CasbinRuleConstructor;
 }
