@@ -95,7 +95,7 @@ export default class TypeORMAdapter implements FilteredAdapter {
       );
     }
     await a.open();
-    if (option.tableName) {
+    if (!(option as ExistentConnection).connection && option.tableName) {
       const metadata = Reflect.getMetadata(
         'typeorm:entity-metadata',
         CasbinRule
