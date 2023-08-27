@@ -29,8 +29,7 @@ type CasbinRuleConstructor = new (...args: any[]) => GenericCasbinRule;
 interface ExistentConnection {
   connection: DataSource;
 }
-export type TypeORMAdapterOptions = ExistentConnection | DataSourceOptions & {
-  tableName?: string;
+export type TypeORMAdapterOptions = ExistentConnection | DataSourceOptions;
 };
 
 export interface TypeORMAdapterConfig {
