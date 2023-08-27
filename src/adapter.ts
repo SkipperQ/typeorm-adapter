@@ -23,7 +23,9 @@ import {
 import { CasbinMongoRule } from './casbinMongoRule';
 import 'reflect-metadata';
 
-type GenericCasbinRule = CasbinRule | CasbinMongoRule;
+type GenericCasbinRule = CasbinRule | CasbinMongoRule & {
+  tableName?: string;
+};
 type CasbinRuleConstructor = new (...args: any[]) => GenericCasbinRule;
 
 interface ExistentConnection {
