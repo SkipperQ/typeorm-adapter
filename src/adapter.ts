@@ -23,15 +23,15 @@ import {
 import { CasbinMongoRule } from './casbinMongoRule';
 import 'reflect-metadata';
 
-type GenericCasbinRule = CasbinRule | CasbinMongoRule & {
-  tableName?: string;
-};
+type GenericCasbinRule = CasbinRule | CasbinMongoRule;
 type CasbinRuleConstructor = new (...args: any[]) => GenericCasbinRule;
 
 interface ExistentConnection {
   connection: DataSource;
 }
-export type TypeORMAdapterOptions = ExistentConnection | DataSourceOptions;
+export type TypeORMAdapterOptions = ExistentConnection | DataSourceOptions & {
+  tableName?: string;
+};
 
 export interface TypeORMAdapterConfig {
   customCasbinRuleEntity?: CasbinRuleConstructor;
