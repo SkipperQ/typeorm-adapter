@@ -16,7 +16,7 @@ import { Helper, Model, FilteredAdapter } from 'casbin';
 import { CasbinRule } from './casbinRule';
 import {
   DataSource,
-  DataSourceOptions as TypeORMDataSourceOptions,
+  DataSourceOptions,
   FindOptionsWhere,
   Repository,
 } from 'typeorm';
@@ -30,10 +30,6 @@ interface ExistentConnection {
   connection: DataSource;
 }
 export type TypeORMAdapterOptions = ExistentConnection | DataSourceOptions;
-
-export interface DataSourceOptions {
-  tableName?: string;
-}
 
 export interface TypeORMAdapterConfig {
   customCasbinRuleEntity?: CasbinRuleConstructor;
@@ -76,6 +72,11 @@ export default class TypeORMAdapter implements FilteredAdapter {
     adapterConfig?: TypeORMAdapterConfig,
   ) {
     let a: TypeORMAdapter;
+
+    const options: TypeORMAdapterOptions = {
+      tableName: "my_casbin_rule",
+    };
+    const adapter = await TypeORMAdapter.newAdapter(options);
 
     const defaults = {
       synchronize: true,
