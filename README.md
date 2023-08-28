@@ -170,6 +170,10 @@ async function myFunction() {
 }
 ```
 ## Custom Database Table Name Example
+If you want to use a custom table name for the casbin rules, you need to:
+Create a custom entity class that inherits from CasbinRule and uses the @Entity decorator with your table name.
+Pass the custom entity class to the entities array of the data source constructor.
+Pass the custom entity class to the customCasbinRuleEntity option of the typeorm-adapter constructor.
 
 ```typescript
 import { newEnforcer } from 'casbin';
