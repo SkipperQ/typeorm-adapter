@@ -169,6 +169,35 @@ async function myFunction() {
     await e.savePolicy();
 }
 ```
+## Custom Database Table Name Example
+
+```typescript
+import { newEnforcer } from 'casbin';
+import TypeORMAdapter from 'typeorm-adapter';
+
+@Entity('custom_rule')
+class CustomCasbinRule extends CasbinRule {
+  @CreateDateColumn()
+  public createdDate: Date;
+
+  @UpdateDateColumn()
+  public updatedDate: Date;
+}
+
+const datasource = new DataSource({
+      ...connectionConfig,
+      entities: [CustomCasbinRule],
+      synchronize: true,
+});
+
+const adapter = TypeORMAdapter.newAdapter(
+      { connection: datasource },
+      {
+        customCasbinRuleEntity: CustomCasbinRule,
+      },
+    );
+```
+
 ## Getting Help
 
 - [Node-Casbin](https://github.com/casbin/node-casbin)
